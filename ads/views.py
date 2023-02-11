@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
-
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.db.utils import IntegrityError
@@ -65,7 +64,6 @@ class AdCreateView(LoginRequiredMixin, View):
         if not form.is_valid():
             return render(request, self.template_name, {'form': form})
 
-        # Add owner to the model before saving
         pic = form.save(commit=False)
         pic.owner = self.request.user
         pic.save()
@@ -123,7 +121,6 @@ class CommentDeleteView(OwnerDeleteView):
     model = Comment
     template_name = "ads/ad_comment_delete.html"
 
-    # https://stackoverflow.com/questions/26290415/deleteview-with-a-dynamic-success-url-dependent-on-id
     def get_success_url(self):
         ad = self.object.ad
         return reverse('ads:ad_detail', args=[ad.id])
@@ -150,5 +147,3 @@ class DeleteFavoriteView(LoginRequiredMixin, View):
             pass
 
         return HttpResponse()
-
-
