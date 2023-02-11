@@ -9,7 +9,7 @@ APP_NAME = 'Django practice'
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = True
+DEBUG = bool(os.environ['MY_DEBUG'])
 
 ALLOWED_HOSTS = [os.environ['MY_HOST']]
 
