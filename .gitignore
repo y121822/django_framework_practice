@@ -1,0 +1,6 @@
+.idea
+venv
+credentials.txt
+myscripts
+db.sqlite3
+.env
