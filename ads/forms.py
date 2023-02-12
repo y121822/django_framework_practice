@@ -1,6 +1,9 @@
 from django import forms
-from ads.models import Ad
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.core.files.uploadedfile import InMemoryUploadedFile
+
+from ads.models import Ad
 from ads.humanize import naturalsize
 
 
