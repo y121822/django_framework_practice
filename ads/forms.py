@@ -8,7 +8,7 @@ class CreateForm(forms.ModelForm):
     max_upload_limit = 2 * 1024 * 1024
     max_upload_limit_text = naturalsize(max_upload_limit)
 
-    picture = forms.FileField(required=False, label='File to Upload <= ' + max_upload_limit_text)
+    picture = forms.ImageField(required=False, label='Image to Upload <= ' + max_upload_limit_text)
     upload_field_name = 'picture'
 
     class Meta:
