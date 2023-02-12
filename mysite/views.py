@@ -2,14 +2,13 @@ from django.views import View
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 
 
 class SignUpView(View):
     model = User
     template_name = "registration/signup.html"
     success_url = reverse_lazy('login')
-    fields = ['username', 'password1']
 
     def get(self, request):
         return render(request, self.template_name, {'form': UserCreationForm()})
